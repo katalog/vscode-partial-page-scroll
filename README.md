@@ -41,7 +41,7 @@ Then open the folder in VS Code and press `F5` to launch an Extension Developmen
 
 ## Release Notes
 
-### 0.1.0
+### 1.0.0
 
 Initial release: configurable percentage-based Page Up/Page Down scrolling.
 
