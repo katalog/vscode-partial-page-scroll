@@ -1,0 +1,79 @@
+{
+  "name": "partial-page-scroll",
+  "displayName": "Partial Page Scroll",
+  "description": "Makes Page Up/Page Down scroll by a configurable percentage of the visible editor instead of a full page",
+  "version": "0.1.0",
+  "publisher": "katalog",
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/katalog/vscode-partial-page-scroll"
+  },
+  "engines": {
+    "vscode": "^1.107.0"
+  },
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "scroll",
+    "page up",
+    "page down",
+    "navigation",
+    "editor"
+  ],
+  "activationEvents": [],
+  "main": "./out/extension.js",
+  "contributes": {
+    "commands": [
+      {
+        "command": "partialPageScroll.pageDown",
+        "title": "Partial Page Scroll: Page Down"
+      },
+      {
+        "command": "partialPageScroll.pageUp",
+        "title": "Partial Page Scroll: Page Up"
+      }
+    ],
+    "keybindings": [
+      {
+        "command": "partialPageScroll.pageDown",
+        "key": "pagedown",
+        "when": "editorTextFocus"
+      },
+      {
+        "command": "partialPageScroll.pageUp",
+        "key": "pageup",
+        "when": "editorTextFocus"
+      }
+    ],
+    "configuration": {
+      "title": "Partial Page Scroll",
+      "properties": {
+        "partialPageScroll.scrollPercentage": {
+          "type": "number",
+          "enum": [10, 20, 30, 40, 50, 60, 70, 80, 90, 100],
+          "default": 50,
+          "description": "Percentage of the visible editor height to scroll on Page Up/Page Down. 100 matches the normal full-page behavior."
+        }
+      }
+    }
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run compile",
+    "compile": "tsc -p ./",
+    "watch": "tsc -watch -p ./",
+    "pretest": "npm run compile && npm run lint",
+    "lint": "eslint src",
+    "test": "vscode-test"
+  },
+  "devDependencies": {
+    "@types/vscode": "^1.107.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "22.x",
+    "typescript-eslint": "^8.48.1",
+    "eslint": "^9.39.1",
+    "typescript": "^5.9.3",
+    "@vscode/test-cli": "^0.0.12",
+    "@vscode/test-electron": "^2.5.2"
+  }
+}
