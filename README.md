@@ -29,7 +29,9 @@ None.
 
 ## Installation
 
-Not yet published on the VS Code Marketplace. To build and run it from source:
+Search for **Partial Page Scroll** in the VS Code Extensions view, or install it from the [VS Code Marketplace](https://marketplace.visualstudio.com/items?itemName=katalog.partial-page-scroll).
+
+To build and run it from source instead:
 
 ```bash
 git clone https://github.com/katalog/vscode-partial-page-scroll.git
