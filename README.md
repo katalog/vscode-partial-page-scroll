@@ -40,16 +40,6 @@ npm run compile
 
 Then open the folder in VS Code and press `F5` to launch an Extension Development Host with the extension active, or package it yourself with [`vsce`](https://github.com/microsoft/vscode-vsce) and install the resulting `.vsix` via **Extensions: Install from VSIX...**.
 
-## Release Notes
-
-### 1.0.1
-
-Cursor now recenters vertically after each Page Up/Page Down instead of landing at the edge of the viewport.
-
-### 1.0.0
-
-Initial release: configurable percentage-based Page Up/Page Down scrolling.
-
 ## License
 
 See [LICENSE](LICENSE).
