@@ -21,21 +21,26 @@ function getVisibleLineCount(editor: vscode.TextEditor): number {
     return count > 0 ? count : 1;
 }
 
-async function scroll(to: 'up' | 'down'): Promise<void> {
+function scroll(to: 'up' | 'down'): void {
     const editor = vscode.window.activeTextEditor;
     if (!editor) {
         return;
     }
     const percent = getScrollPercentage();
     const visibleLines = getVisibleLineCount(editor);
-    const value = Math.max(1, Math.round((visibleLines * percent) / 100));
+    const delta = Math.max(1, Math.round((visibleLines * percent) / 100));
 
-    await vscode.commands.executeCommand('editorScroll', {
-        to,
-        by: 'line',
-        value,
-        revealCursor: true,
-    });
+    const currentLine = editor.selection.active.line;
+    const targetLine = to === 'down'
+        ? Math.min(editor.document.lineCount - 1, currentLine + delta)
+        : Math.max(0, currentLine - delta);
+
+    const targetLineRange = editor.document.lineAt(targetLine).range;
+    const targetColumn = Math.min(editor.selection.active.character, targetLineRange.end.character);
+    const targetPosition = new vscode.Position(targetLine, targetColumn);
+
+    editor.selection = new vscode.Selection(targetPosition, targetPosition);
+    editor.revealRange(new vscode.Range(targetPosition, targetPosition), vscode.TextEditorRevealType.InCenter);
 }
 
 export function activate(context: vscode.ExtensionContext) {

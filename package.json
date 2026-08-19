@@ -2,7 +2,7 @@
   "name": "partial-page-scroll",
   "displayName": "Partial Page Scroll",
   "description": "Makes Page Up/Page Down scroll by a configurable percentage of the visible editor instead of a full page",
-  "version": "1.0.0",
+  "version": "1.0.1",
   "publisher": "katalog",
   "repository": {
     "type": "git",
